@@ -18,11 +18,11 @@
     </div>
 
     <div class="space-y-3">
-        <button @click="playSfx(); openGuestModal = true" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-stone-950 font-black tracking-wide text-sm shadow-lg shadow-amber-900/30 hover:brightness-110 active:scale-[0.98] transition border border-amber-300/40">
+        <button type="button" @click="playSfx(); openGuestModal = true" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-stone-950 font-black tracking-wide text-sm shadow-lg shadow-amber-900/30 hover:brightness-110 active:scale-[0.98] transition border border-amber-300/40">
             🦴 MULAI SEBAGAI TAMU
         </button>
 
-        <button @click="playSfx(); openLoginModal = true" class="w-full py-3.5 px-6 rounded-2xl bg-[#1c1b22] border border-stone-700 text-amber-300 font-bold text-xs hover:bg-stone-800 transition">
+        <button type="button" @click="playSfx(); openLoginModal = true" class="w-full py-3.5 px-6 rounded-2xl bg-[#1c1b22] border border-stone-700 text-amber-300 font-bold text-xs hover:bg-stone-800 transition">
             🔑 LOGIN / DAFTAR AKUN
         </button>
     </div>
@@ -32,7 +32,7 @@
         <div class="bg-[#1c1b22] border-2 border-stone-700 p-6 rounded-2xl max-w-sm w-full space-y-5 shadow-2xl relative">
             <div class="flex justify-between items-center border-b border-stone-800 pb-3">
                 <h3 class="font-purba text-base font-bold text-amber-300">📜 Ukir Nama Peneliti</h3>
-                <button @click="openGuestModal = false" class="text-stone-500 hover:text-stone-300">✕</button>
+                <button type="button" @click="openGuestModal = false" class="text-stone-500 hover:text-stone-300">✕</button>
             </div>
             <form action="{{ route('guest.login') }}" method="POST" class="space-y-4">
                 @csrf
@@ -53,7 +53,7 @@
         <div class="bg-[#1c1b22] border-2 border-stone-700 p-6 rounded-2xl max-w-sm w-full space-y-4 shadow-2xl relative" x-data="{ isRegister: false }">
             <div class="flex justify-between items-center border-b border-stone-800 pb-3">
                 <h3 class="font-purba text-base font-bold text-amber-300" x-text="isRegister ? '📝 Daftar Akun Baru' : '🔑 Login Peneliti'"></h3>
-                <button @click="openLoginModal = false" class="text-stone-500 hover:text-stone-300">✕</button>
+                <button type="button" @click="openLoginModal = false" class="text-stone-500 hover:text-stone-300">✕</button>
             </div>
 
             <form x-show="!isRegister" action="{{ route('user.login') }}" method="POST" class="space-y-3">
@@ -82,14 +82,12 @@
 </div>
 
 <script>
-    // Mematikan dan mereset BGM otomatis ketika berada di halaman awal/auth
     document.addEventListener("DOMContentLoaded", function() {
         const bgm = document.getElementById('globalBgm');
         if (bgm) {
             bgm.pause();
             bgm.currentTime = 0;
         }
-        // Opsional: Matikan status BGM aktif di localStorage agar tidak auto-play di halaman auth
         localStorage.setItem('bgm_active', 'false');
     });
 </script>
