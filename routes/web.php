@@ -11,7 +11,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login-user', [AuthController::class, 'login'])->name('user.login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Protected Game Routes (Harus Login / Guest dulu)
+// Protected Game Routes (Harus Login / Guest dulu) //update
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [GameController::class, 'home'])->name('game.home');
     Route::get('/timeline', [GameController::class, 'timeline'])->name('game.timeline');
