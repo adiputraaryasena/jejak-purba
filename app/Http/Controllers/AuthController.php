@@ -9,17 +9,18 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // Process Masuk Mode Tamu (Guest)
+    // Process Masuk Mode Tamu (Guest) - Diperbaiki agar tidak error 500
     public function playAsGuest(Request $request)
     {
         $request->validate([
             'username' => 'required|string|max:20',
         ]);
 
+        // Menggunakan kolom standar (name dan email dummy unik) agar tidak error jika kolom custom belum dimigrasi di Railway
         $user = User::create([
             'name' => $request->username,
-            'is_guest' => true,
-            'total_score' => 0
+            'email' => 'guest_' . time() . rand(100,999) . '@jejakpurba.test',
+            'password' => Hash::make('guest12345'),
         ]);
 
         Auth::login($user);
@@ -40,8 +41,6 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'is_guest' => false,
-            'total_score' => 0
         ]);
 
         Auth::login($user);
