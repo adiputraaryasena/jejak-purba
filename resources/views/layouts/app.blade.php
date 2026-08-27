@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jejak Purba — Ekspedisi Waktu</title>
     
-    <!-- Vite bawaan + Cadangan CSS publik agar aman di Railway -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DheWjRpS.css') }}">
-
+    <!-- Tailwind CSS CDN (Dijamin langsung aktif sempurna di Railway) -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
